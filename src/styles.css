@@ -1,0 +1,68 @@
+body {
+  font-family: sans-serif;
+}
+
+.container {
+  display: block;
+  margin: 60px auto;
+  padding: 30px 0px;
+}
+
+h4 {
+  color: #9aa0a6;
+}
+
+h5 {
+  opacity: 60%;
+}
+
+.main {
+  padding: 10px;
+}
+
+#current-weather-info {
+  padding: 100px 10px;
+}
+
+.fa-cloud-moon {
+  font-size: 50px;
+  padding: 10px 5px;
+}
+
+.temperature {
+  font-size: 50px;
+}
+
+.units {
+  position: relative;
+  top: -24px;
+  left: 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.card.mb-3 {
+  display: block;
+  margin: 0 auto;
+  padding: 30px 60px;
+}
+
+.container.text-center {
+  margin: 0 auto;
+}
+
+.fa-cloud-sun {
+  font-size: 30px;
+  margin-left: -2px;
+}
+
+.fa-sun {
+  font-size: 30px;
+  margin-left: -2px;
+}
+
+.col {
+  padding: 0px 15px;
+}
