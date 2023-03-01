@@ -28,25 +28,25 @@ function formatDate(date) {
 
 document.getElementById("date").innerHTML = formatDate();
 
-let apiKey = `866a208a73eeff02182218e9441647a1`;
+let apiKey = `a606oe7b016d122f0t18d2431534646a`;
 
 function submitCity(event) {
   event.preventDefault();
   let cityInput = document.querySelector(`#city-input`);
   let h1 = document.querySelector(`h1`);
   h1.innerHTML = `${cityInput.value}`;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&units=metric&appid=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${cityInput.value}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
 }
 
 function showTemperature(response) {
-  let temperature = Math.round(response.data.main.temp);
+  let temperature = Math.round(response.data.temperature.current);
   let currentTemperature = document.querySelector(`.temperature`);
   currentTemperature.innerHTML = `${temperature}`;
   let h1 = document.querySelector(`h1`);
-  h1.innerHTML = response.data.name;
+  h1.innerHTML = response.data.city;
 
-  let description = response.data.weather[0].main;
+  let description = response.data.condition.description;
   let weatherDescription = document.querySelector(`#weather-description`);
   weatherDescription.innerHTML = `${description}`;
 }
@@ -56,8 +56,8 @@ function showPosition(position) {
   let lon = position.coords.longitude;
   console.log(lat);
   console.log(lon);
-  let apiKey = `3499ef150985eccadd080ff408a018df`;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+  let apiKey = `a606oe7b016d122f0t18d2431534646a`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}`;
   console.log(apiUrl);
   axios.get(apiUrl).then(showTemperature);
 }
@@ -68,7 +68,7 @@ function getPosition(event) {
 }
 
 function search(city) {
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
   axios.get(apiUrl).then(showTemperature);
 }
 
