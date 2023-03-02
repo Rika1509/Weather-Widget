@@ -49,6 +49,18 @@ function showTemperature(response) {
   let description = response.data.condition.description;
   let weatherDescription = document.querySelector(`#weather-description`);
   weatherDescription.innerHTML = `${description}`;
+
+  let humidity = response.data.temperature.humidity;
+  let currentHumidity = document.querySelector(`#humidity`);
+  currentHumidity.innerHTML = `${humidity}`;
+
+  let speed = response.data.wind.speed;
+  let currentWindSpeed = document.querySelector(`#wind`);
+  currentWindSpeed.innerHTML = `${speed}`;
+
+  let pressure = response.data.temperature.pressure;
+  let currentPressure = document.querySelector(`#pressure`);
+  currentPressure.innerHTML = `${pressure}`;
 }
 
 function showPosition(position) {

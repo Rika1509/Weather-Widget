@@ -24,6 +24,10 @@ h5 {
   padding: 100px 10px;
 }
 
+#current-weather-info:first-letter {
+  text-transform: capitalize;
+}
+
 .fa-cloud-moon {
   font-size: 50px;
   padding: 10px 5px;
@@ -31,6 +35,13 @@ h5 {
 
 .temperature {
   font-size: 50px;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
 
 .units {
