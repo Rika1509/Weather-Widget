@@ -45,6 +45,7 @@ function showTemperature(response) {
   currentTemperature.innerHTML = `${temperature}`;
   let h1 = document.querySelector(`h1`);
   h1.innerHTML = response.data.city;
+  console.log(response.data);
 
   let description = response.data.condition.description;
   let weatherDescription = document.querySelector(`#weather-description`);
@@ -61,6 +62,13 @@ function showTemperature(response) {
   let pressure = response.data.temperature.pressure;
   let currentPressure = document.querySelector(`#pressure`);
   currentPressure.innerHTML = `${pressure}`;
+
+  let icon = response.data.condition.icon;
+  let currentWeatherIcon = document.querySelector(`#icon`);
+  currentWeatherIcon.setAttribute(
+    `src`,
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${icon}.png`
+  );
 }
 
 function showPosition(position) {
