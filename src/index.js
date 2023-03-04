@@ -33,8 +33,6 @@ let apiKey = `a606oe7b016d122f0t18d2431534646a`;
 function submitCity(event) {
   event.preventDefault();
   let cityInput = document.querySelector(`#city-input`);
-  let h1 = document.querySelector(`h1`);
-  h1.innerHTML = `${cityInput.value}`;
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${cityInput.value}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
 }
@@ -46,6 +44,8 @@ function showTemperature(response) {
   let h1 = document.querySelector(`h1`);
   h1.innerHTML = response.data.city;
   console.log(response.data);
+
+  temperature = Math.round(response.data.temperature.current);
 
   let description = response.data.condition.description;
   let weatherDescription = document.querySelector(`#weather-description`);
