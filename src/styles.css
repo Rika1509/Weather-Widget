@@ -55,6 +55,11 @@ a {
   text-decoration: none;
 }
 
+.active {
+  color: black;
+  cursor: default;
+}
+
 .card.mb-3 {
   display: block;
   margin: 0 auto;
