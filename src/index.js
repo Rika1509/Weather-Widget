@@ -92,6 +92,27 @@ function search(city) {
   axios.get(apiUrl).then(showTemperature);
 }
 
+function showFahrenheitTemp(event) {
+  event.preventDefault();
+  let currentTemperature = document.querySelector(".temperature");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  currentTemperature.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+function showCelsiusTemp(event) {
+  event.preventDefault();
+  let currentTemperature = document.querySelector(".temperature");
+  currentTemperature.innerHTML = celsiusTemperature;
+}
+
+celsiusTemperature = null;
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", showFahrenheitTemp);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", showCelsiusTemp);
+
 let searchForLocation = document.querySelector(`form`);
 searchForLocation.addEventListener(`submit`, submitCity);
 
