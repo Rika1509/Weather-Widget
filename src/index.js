@@ -45,7 +45,7 @@ function showTemperature(response) {
   h1.innerHTML = response.data.city;
   console.log(response.data);
 
-  temperature = Math.round(response.data.temperature.current);
+  celsiusTemperature = Math.round(response.data.temperature.current);
 
   let description = response.data.condition.description;
   let weatherDescription = document.querySelector(`#weather-description`);
