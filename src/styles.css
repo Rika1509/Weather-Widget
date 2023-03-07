@@ -70,6 +70,22 @@ a {
   margin: 0 auto;
 }
 
+.weather-forecast-temp {
+  padding: 15px;
+}
+
+.weather-forecast-date {
+  font-size: 16px;
+}
+
+.weather-forecast-temp {
+  font-size: 13px;
+}
+
+.weather-forecast-temp-max {
+  padding-right: 5px;
+}
+
 .fa-cloud-sun {
   font-size: 30px;
   margin-left: -2px;
