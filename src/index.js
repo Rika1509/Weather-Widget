@@ -37,6 +37,31 @@ function submitCity(event) {
   axios.get(apiUrl).then(showTemperature);
 }
 
+function showForecast() {
+  let currentForecast = document.querySelector("#weather-forecast");
+
+  let days = ["Wed", "Thu", "Fri", "Sat", "Sun"];
+
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col">
+        <div class="weather-forecast-date">
+          <p>${day}</p>
+        </div><br /><i class="fa-solid fa-cloud-sun"></i>
+        <br />
+        <div class="weather-forecast-temp">
+          <span class="weather-forecast-temp-max">18°</span><span
+              class="weather-forecast-temp-min">12°</span>
+        </div>
+      </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  currentForecast.innerHTML = forecastHTML;
+}
+
 function showTemperature(response) {
   let temperature = Math.round(response.data.temperature.current);
   let currentTemperature = document.querySelector(`.temperature`);
@@ -70,6 +95,8 @@ function showTemperature(response) {
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${icon}.png`
   );
 }
+
+showForecast();
 
 function showPosition(position) {
   let lat = position.coords.latitude;
