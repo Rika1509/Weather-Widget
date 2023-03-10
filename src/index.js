@@ -37,7 +37,7 @@ function submitCity(event) {
   axios.get(apiUrl).then(showTemperature);
 }
 
-function showForecast() {
+function showForecast(response) {
   let currentForecast = document.querySelector("#weather-forecast");
 
   let days = ["Wed", "Thu", "Fri", "Sat", "Sun"];
@@ -60,6 +60,14 @@ function showForecast() {
 
   forecastHTML = forecastHTML + `</div>`;
   currentForecast.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let lat = coordinates.latitude;
+  let lon = coordinates.longitude;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showForecast);
 }
 
 function showTemperature(response) {
@@ -94,6 +102,8 @@ function showTemperature(response) {
     `src`,
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${icon}.png`
   );
+
+  getForecast(response.data.coordinates);
 }
 
 showForecast();
