@@ -37,23 +37,34 @@ function submitCity(event) {
   axios.get(apiUrl).then(showTemperature);
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function showForecast(response) {
+  let forecast = response.data.daily;
   let currentForecast = document.querySelector("#weather-forecast");
 
-  let days = ["Wed", "Thu", "Fri", "Sat", "Sun"];
-
   let forecastHTML = `<div class="row">`;
-  days.forEach(function (day) {
+  forecast.forEach(function (day) {
     forecastHTML =
       forecastHTML +
       `<div class="col">
         <div class="weather-forecast-date">
-          <p>${day}</p>
-        </div><br /><i class="fa-solid fa-cloud-sun"></i>
+          <p>${formatDay(day.time)}</p>
+        </div><br /><img src="${day.condition.icon_url}" />
         <br />
         <div class="weather-forecast-temp">
-          <span class="weather-forecast-temp-max">18°</span><span
-              class="weather-forecast-temp-min">12°</span>
+          <span class="weather-forecast-temp-max">${Math.round(
+            day.temperature.maximum
+          )}°</span><span
+              class="weather-forecast-temp-min">${Math.round(
+                day.temperature.minimum
+              )}°</span>
         </div>
       </div>`;
   });
@@ -105,8 +116,6 @@ function showTemperature(response) {
 
   getForecast(response.data.coordinates);
 }
-
-showForecast();
 
 function showPosition(position) {
   let lat = position.coords.latitude;
