@@ -9,7 +9,8 @@ body {
 }
 
 h4,
-small {
+small,
+p {
   color: #9aa0a6;
 }
 
@@ -97,5 +98,5 @@ a {
 }
 
 .col {
-  padding: 0px 15px;
+  padding: 0px 10px;
 }
